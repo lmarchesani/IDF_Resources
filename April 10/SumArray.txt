@@ -1,0 +1,22 @@
+.386
+.model flat,stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+
+.data 
+array1 BYTE 1,2,3,4,5,6,7,8,9,10
+
+
+.code
+main PROC
+MOV     eax, 1
+MOV     ecx, lengthof array1
+MOV		edx, 00h
+Label1:
+ADD     dx, ax    ;This adds int turn 1, 2, 3, ... ,10 to DX
+INC     ax
+LOOP    Label1
+
+INVOKE ExitProcess,0
+main ENDP
+END main
